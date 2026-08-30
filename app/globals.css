@@ -789,3 +789,19 @@ h1 {
     font-size: 1rem;
   }
 }
+
+@media (max-width: 759px) {
+  .mobile-menu .btn.btn-primary {
+    display: flex !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 50px !important;
+    background: #007a78 !important;
+    color: #ffffff !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    font-size: 0.92rem !important;
+    font-weight: 700 !important;
+    text-indent: 0 !important;
+  }
+}
