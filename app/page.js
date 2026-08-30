@@ -7,40 +7,127 @@ const areas = [
   "Nungambakkam",
   "Mylapore",
   "Egmore",
+  "Central Chennai",
+  "Chetpet",
+  "Gopalapuram",
+  "Mandaveli",
+  "Nandanam",
+  "R.A. Puram (Raja Annamalaipuram)",
+  "Besant Nagar",
   "Adyar",
+  "Thiruvanmiyur",
   "Velachery",
+  "Madipakkam",
+  "Pallikaranai",
+  "Medavakkam",
+  "Kovilambakkam",
+  "Nanmangalam",
+  "Keelkattalai",
+  "Nanganallur",
+  "Adambakkam",
+  "Meenambakkam",
+  "St. Thomas Mount",
+  "Ekkatuthangal",
   "Guindy",
-  "Anna Nagar",
-  "Porur",
-  "Tambaram",
+  "Saidapet",
+  "Teynampet",
+  "Alwarpet",
+  "Jafferkhanpet",
+  "Kottivakkam",
+  "Palavakkam",
+  "Neelankarai",
+  "Injambakkam",
+  "Vettuvankeni",
+  "Panaiyur",
+  "Pattinapakkam",
+  "Marina Beach",
+  "Taramani",
+  "Perungudi",
+  "Thoraipakkam",
+  "Sholinganallur",
+  "Semmancheri",
+  "Navalur",
+  "Padur",
+  "Siruseri",
+  "Kelambakkam",
+  "Thaiyur",
+  "Thalambur",
+  "Perumbakkam",
+  "Karapakkam",
+  "Thiruporur",
+  "Pudupakkam",
+  "Vengadamangalam",
+  "Rathinamangalam",
+  "Kandigai",
+  "Melakottaiyur",
+  "Mambakkam",
+  "Selaiyur",
+  "Rajakilpakkam",
+  "Chitlapakkam",
+  "Hasthinapuram",
+  "Pammal",
   "Pallavaram",
   "Chrompet",
-  "Sholinganallur",
-  "Perungudi",
+  "Nemilichery",
+  "Perungalathur",
+  "Vandalur",
+  "Mudichur",
+  "Tambaram",
+  "Urapakkam",
+  "Guduvanchery",
+  "Potheri",
+  "Kattankulathur",
+  "Maraimalai Nagar",
+  "Mahindra City",
+  "Padappai",
+  "Avadi",
+  "Pattabiram",
+  "Thiruninravur",
+  "Thirumazhisai",
+  "Poonamallee",
+  "Mangadu",
+  "Kundrathur",
+  "Kovur",
+  "Porur",
+  "Ramapuram",
+  "Moulivakkam",
+  "Gerugambakkam",
+  "Kolapakkam",
+  "Iyyappanthangal",
+  "Madanandapuram",
+  "Valasaravakkam",
+  "Alapakkam",
+  "Nerkundram",
+  "Madhuravoyal",
+  "Koyambedu",
+  "Anna Nagar",
+  "Arumbakkam",
   "Kilpauk",
-  "Ambattur",
+  "Aminjikarai",
   "Kodambakkam",
   "Vadapalani",
   "Ashok Nagar",
   "K.K. Nagar",
-  "Thiruvanmiyur",
-  "Madipakkam",
-  "Pallikaranai",
-  "Perambur",
+  "West Mambalam",
+  "Villivakkam",
+  "Padi",
+  "Ambattur",
   "Kolathur",
   "Madhavaram",
-  "Mogappair",
-  "Avadi",
-  "Poonamallee",
-  "Vandalur",
-  "Guduvanchery",
-  "Navalur",
-  "Medavakkam",
-  "Nanganallur",
-  "West Mambalam",
-  "Saidapet",
+  "Perambur",
+  "Vyasarpadi",
+  "Tondiarpet",
+  "Washermanpet",
   "Royapuram",
   "Triplicane",
+  "Thiruvottiyur",
+  "Ennore",
+  "Nedunkundram",
+  "Mappedu",
+  "Karanai",
+  "Puducherry",
+  "Cosmo City",
+  "West and Suburban Chennai",
 ];
 
 const services = [
@@ -115,7 +202,7 @@ export default function Home() {
   const [submitFallback, setSubmitFallback] = useState(null);
 
   const visibleAreas = useMemo(() => {
-    return showAllAreas ? areas : areas.slice(0, 16);
+    return showAllAreas ? areas : areas.slice(0, 12);
   }, [showAllAreas]);
 
   const whatsappNumber =
@@ -416,26 +503,6 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="section" id="service-areas">
-          <div className="container">
-            <p className="section-kicker">Chennai Coverage</p>
-            <h2>Service Areas in Chennai</h2>
-            <p className="section-intro">
-              We serve major localities across Chennai and nearby areas for doorstep repair.
-            </p>
-            <div className="areas-list">
-              {visibleAreas.map((area) => (
-                <span key={area}>{area}</span>
-              ))}
-            </div>
-            <div className="areas-action">
-              <button className="btn btn-outline" type="button" onClick={() => setShowAllAreas((v) => !v)}>
-                {showAllAreas ? "Show Less Areas" : "Show More Areas"}
-              </button>
-            </div>
-          </div>
-        </section>
-
         <section className="section section-soft">
           <div className="container">
             <p className="section-kicker">Customer Trust</p>
@@ -453,6 +520,26 @@ export default function Home() {
                 <h3>Warranty Support</h3>
                 <p>180-day warranty on completed repair work.</p>
               </article>
+            </div>
+          </div>
+        </section>
+
+        <section className="section" id="service-areas">
+          <div className="container">
+            <p className="section-kicker">Service Coverage</p>
+            <h2>Top Service Areas in Chennai and Nearby</h2>
+            <p className="section-intro">
+              We cover core Chennai plus nearby suburbs for doorstep washing machine repair.
+            </p>
+            <div className="areas-list">
+              {visibleAreas.map((area) => (
+                <span key={area}>{area}</span>
+              ))}
+            </div>
+            <div className="areas-action">
+              <button className="btn btn-outline" type="button" onClick={() => setShowAllAreas((v) => !v)}>
+                {showAllAreas ? "Show Fewer Areas" : `View All ${areas.length} Areas`}
+              </button>
             </div>
           </div>
         </section>
