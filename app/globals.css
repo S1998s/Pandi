@@ -84,13 +84,14 @@ h3 {
 }
 
 .brand-logo {
-  width: 56px;
-  height: 56px;
-  border-radius: 12px;
-  border: 1px solid var(--line);
+  width: 148px;
+  height: 44px;
+  border-radius: 0;
+  border: 0;
   object-fit: contain;
-  background: #fff;
-  padding: 2px;
+  object-position: left center;
+  background: transparent;
+  padding: 0;
 }
 
 .brand-name {

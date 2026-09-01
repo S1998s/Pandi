@@ -125,39 +125,39 @@ function buildOwnerTemplate({ name, phone, brand, email, source }) {
   return { subject, text, html };
 }
 
-function buildCustomerTemplate({ name, phone, brand }) {
-  const safeBrand = brand || "Not selected";
+function buildCustomerTemplate({ name, phone, brand, email, source }) {
+  const submittedAt = new Date().toLocaleString("en-IN", {
+    dateStyle: "medium",
+    timeStyle: "short",
+    timeZone: "Asia/Kolkata",
+  });
 
   return {
     subject: "Booking Confirmation - Wash Fix Service Chennai",
     text: [
       `Hi ${name},`,
       "",
-      "Your booking request is received.",
-      "Our team will call you shortly to confirm the visit.",
+      "Your booking request is confirmed.",
+      "We will take care of everything from here.",
+      "Sit back, relax, and let Wash Fix Service handle it.",
       "",
-      `Phone: ${phone}`,
-      `Brand: ${safeBrand}`,
+      "Our support team will call you shortly to schedule the visit.",
+      `Booking time: ${submittedAt}`,
       "",
       "For urgent support call: +91 94459 59685",
+      "Need quick help on WhatsApp? Message us at the same number.",
       "Wash Fix Service Chennai",
     ].join("\n"),
     html: `
       <div style="font-family:Arial,Helvetica,sans-serif;line-height:1.55;color:#10233a;max-width:680px;margin:0 auto;">
         <h2 style="margin:0 0 12px 0;color:#0a5f6a;">Booking Confirmation</h2>
         <p style="margin:0 0 10px 0;">Hi ${name},</p>
-        <p style="margin:0 0 14px 0;">Your booking request is received. Our team will call you shortly to confirm the visit.</p>
-        <table style="width:100%;border-collapse:collapse;background:#f9fcff;border:1px solid #d7e1ec;">
-          <tr>
-            <td style="padding:10px;border-bottom:1px solid #d7e1ec;"><strong>Phone</strong></td>
-            <td style="padding:10px;border-bottom:1px solid #d7e1ec;">${phone}</td>
-          </tr>
-          <tr>
-            <td style="padding:10px;"><strong>Brand</strong></td>
-            <td style="padding:10px;">${safeBrand}</td>
-          </tr>
-        </table>
+        <p style="margin:0 0 10px 0;">Your booking request is confirmed.</p>
+        <p style="margin:0 0 10px 0;">We will take care of everything from here. Sit back, relax, and let Wash Fix Service handle it.</p>
+        <p style="margin:0 0 10px 0;">Our support team will call you shortly to schedule your technician visit.</p>
+        <p style="margin:0 0 12px 0;color:#3a556f;">Booking time: ${submittedAt}</p>
         <p style="margin:14px 0 0 0;">Urgent support: <strong>+91 94459 59685</strong></p>
+        <p style="margin:6px 0 0 0;">Need quick help on WhatsApp? Message us at the same number.</p>
         <p style="margin:8px 0 0 0;">Wash Fix Service Chennai</p>
       </div>
     `,
@@ -209,9 +209,16 @@ export async function POST(request) {
       );
     }
 
-    if (email && !isValidEmail(email)) {
+    if (!brand) {
       return Response.json(
-        { ok: false, message: "Invalid email address." },
+        { ok: false, message: "Machine brand is required." },
+        { status: 400 }
+      );
+    }
+
+    if (!email || !isValidEmail(email)) {
+      return Response.json(
+        { ok: false, message: "Valid email address is required." },
         { status: 400 }
       );
     }
@@ -259,7 +266,7 @@ export async function POST(request) {
     });
 
     if (shouldSendCustomerMail && isValidEmail(email)) {
-      const customerTemplate = buildCustomerTemplate({ name, phone, brand });
+      const customerTemplate = buildCustomerTemplate({ name, phone, brand, email, source });
       await transporter.sendMail({
         from: smtpFrom,
         to: email,

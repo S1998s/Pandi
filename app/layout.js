@@ -16,9 +16,9 @@ export const metadata = {
   description:
     "Wash Fix Service Chennai offers fast washing machine repair at your doorstep with same-day support and clear pricing.",
   icons: {
-    icon: "/images/FinalLogo.png?v=7",
-    shortcut: "/images/FinalLogo.png?v=7",
-    apple: "/images/FinalLogo.png?v=7",
+    icon: "/images/WashFixLogoLatest.jpeg?v=1",
+    shortcut: "/images/WashFixLogoLatest.jpeg?v=1",
+    apple: "/images/WashFixLogoLatest.jpeg?v=1",
   },
 };
 

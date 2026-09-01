@@ -253,8 +253,13 @@ export default function Home() {
       return;
     }
 
-    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       window.alert("Please enter a valid email address.");
+      return;
+    }
+
+    if (!brand) {
+      window.alert("Please select your machine brand.");
       return;
     }
 
@@ -300,7 +305,7 @@ export default function Home() {
       <header className="site-header" id="top">
         <div className="container header-inner">
           <a className="brand" href="#top" aria-label="Wash Fix Service Chennai Home">
-            <img src="/images/logoOnly.jpeg?v=6" alt="Wash Fix Service Chennai logo" className="brand-logo" width="56" height="56" />
+            <img src="/images/WashFixLogoLatest.jpeg?v=1" alt="Wash Fix Service Chennai logo" className="brand-logo" width="148" height="44" />
             <span className="brand-name">Wash Fix Service Chennai</span>
           </a>
 
@@ -385,12 +390,12 @@ export default function Home() {
                   <label htmlFor="phone">Phone</label>
                   <input id="phone" name="phone" type="tel" inputMode="numeric" maxLength={10} placeholder="10 digit mobile number" required />
 
-                  <label htmlFor="email">Email (optional)</label>
-                  <input id="email" name="email" type="email" placeholder="yourmail@example.com" />
+                  <label htmlFor="email">Email</label>
+                  <input id="email" name="email" type="email" placeholder="yourmail@example.com" required />
 
                   <label htmlFor="brand">Machine Brand</label>
-                  <select id="brand" name="brand">
-                    <option value="">Select brand</option>
+                  <select id="brand" name="brand" defaultValue="" required>
+                    <option value="" disabled>Select brand</option>
                     <option>Samsung</option>
                     <option>LG</option>
                     <option>Whirlpool</option>
