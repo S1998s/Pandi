@@ -1,4 +1,5 @@
 import { DM_Sans, Sora } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const dmSans = DM_Sans({
@@ -25,6 +26,19 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${dmSans.variable} ${sora.variable}`}>
+      <head>
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=AW-18366938544"
+          strategy="beforeInteractive"
+        />
+        <Script id="google-ads-tag" strategy="beforeInteractive">
+          {`window.dataLayer = window.dataLayer || [];
+function gtag(){window.dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'AW-18366938544');`}
+        </Script>
+      </head>
       <body>{children}</body>
     </html>
   );
