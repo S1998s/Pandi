@@ -407,6 +407,7 @@ export default function Home() {
 								<li>Checkup starts at Rs. 99</li>
 								<li>180-day service warranty</li>
 								<li>Support for top-load and front-load machines</li>
+								<li>Same-day doorstep service available across Chennai</li>
 							</ul>
 						</div>
 
