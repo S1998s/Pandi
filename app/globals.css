@@ -647,41 +647,153 @@ h1 {
   margin-top: 0.7rem;
 }
 
-.contact-box {
-  background: linear-gradient(145deg, #ffffff, #eef8f7);
-  border: 1px solid #cae7e4;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  padding: 1rem;
+.contact {
+  background: #edf5f5;
+}
+
+.contact-section {
   display: grid;
-  gap: 0.6rem;
+  gap: 1.25rem;
 }
 
-.contact-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
+.contact-heading {
+  max-width: 680px;
 }
 
-.mail-link {
-  width: 100%;
+.contact-grid {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.contact-card {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 0.75rem;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 1rem;
+  box-shadow: 0 8px 22px rgba(16, 35, 58, 0.06);
+}
+
+.contact-card--featured {
+  border-color: #b2ddd8;
+  background: #f7fcfb;
+}
+
+.contact-card__icon {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: var(--surface-soft);
   color: var(--brand-strong);
-  font-weight: 700;
+  font-family: "Sora", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.contact-card--featured .contact-card__icon {
+  background: #dff5f1;
+}
+
+.contact-card__label {
+  margin: 0 0 0.18rem;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.contact-card h3 {
+  margin: 0;
+  font-size: 0.98rem;
+  overflow-wrap: anywhere;
+}
+
+.contact-card .btn {
+  grid-column: 1 / -1;
+  width: 100%;
 }
 
 .site-footer {
-  border-top: 1px solid var(--line);
-  background: #fff;
+  border-top: 1px solid #d8e6e5;
+  background: #10233a;
+  color: #fff;
 }
 
 .footer-inner {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.1rem;
+  padding: 1.75rem 0;
+}
+
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 0;
+}
+
+.footer-logo {
+  width: 148px;
+  height: 44px;
+  display: block;
+  margin: 0 auto 0.75rem;
+  object-fit: contain;
+  object-position: center;
+  background: #fff;
+  padding: 0.15rem 0.35rem;
+  border-radius: 8px;
+}
+
+.footer-brand strong {
+  font-family: "Sora", sans-serif;
+  font-size: 1.05rem;
+}
+
+.footer-brand p,
+.footer-copyright {
+  margin: 0.35rem 0 0;
+  color: #bfd0df;
+  font-size: 0.82rem;
+}
+
+.footer-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 0.4rem;
-  font-size: 0.86rem;
-  color: var(--muted);
-  padding: 0.85rem 0;
+  gap: 0.6rem 0.85rem;
+}
+
+.footer-links a {
+  color: #e7f1f1;
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.footer-links a:hover {
+  color: #78ded5;
+}
+
+.footer-links span {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #78ded5;
+}
+
+.footer-copyright {
+  width: 100%;
+  margin: 0;
+  padding-top: 0.9rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .floating-cta {
@@ -689,18 +801,23 @@ h1 {
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 50;
+  z-index: 90;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.45rem;
-  padding: 0.55rem;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.55rem max(0.75rem, env(safe-area-inset-right)) calc(0.55rem + env(safe-area-inset-bottom)) max(0.75rem, env(safe-area-inset-left));
   border-top: 1px solid var(--line);
-  background: rgba(247, 249, 252, 0.98);
-  backdrop-filter: blur(8px);
+  background: rgba(247, 249, 252, 0.96);
+  backdrop-filter: blur(10px);
 }
 
 .floating-cta .btn {
-  border-radius: 10px;
+  width: 100%;
+  min-width: 0;
+  min-height: 48px;
+  border-radius: 12px;
+  white-space: nowrap;
 }
 
 @media (min-width: 760px) {
@@ -761,6 +878,30 @@ h1 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
+  .contact-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .contact-card {
+    grid-template-rows: auto 1fr auto;
+  }
+
+  .footer-inner {
+    padding: 2rem 0;
+  }
+
+  .footer-links {
+    gap: 0.85rem 1.1rem;
+  }
+
+  .footer-links {
+    justify-content: center;
+  }
+
+  .footer-copyright {
+    grid-column: 1;
+  }
+
   .btn {
     font-size: 0.95rem;
   }
@@ -781,28 +922,88 @@ h1 {
     min-height: 72px;
   }
 
+  .brand {
+    max-width: calc(100% - 54px);
+  }
+
   .brand-logo {
-    width: 48px;
-    height: 48px;
+    width: 44px;
+    height: 44px;
   }
 
   .brand-name {
-    font-size: 1rem;
+    display: block;
+    max-width: 220px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 0.92rem;
+  }
+
+  .hero-cta,
+  .contact-card .btn {
+    width: 100%;
+  }
+
+  .hero-cta .btn {
+    flex: 1 1 140px;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-card {
+    grid-template-columns: 44px minmax(0, 1fr);
+  }
+
+  .contact-card__icon {
+    width: 44px;
+    height: 44px;
+  }
+
+  .footer-inner {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.9rem;
+    padding: 1.25rem 0 1.5rem;
+  }
+
+  .footer-brand {
+    min-width: 0;
+  }
+
+  .footer-brand strong {
+    display: block;
+    white-space: normal;
+  }
+
+  .footer-brand p {
+    max-width: 100%;
+  }
+
+  .footer-links {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .footer-copyright {
+    margin-top: 0;
   }
 }
 
-@media (max-width: 759px) {
-  .mobile-menu .btn.btn-primary {
-    display: flex !important;
-    width: 100% !important;
-    height: auto !important;
-    min-height: 50px !important;
-    background: #007a78 !important;
-    color: #ffffff !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-    font-size: 0.92rem !important;
-    font-weight: 700 !important;
-    text-indent: 0 !important;
+@media (max-width: 380px) {
+  .brand-name {
+    max-width: 175px;
+  }
+
+  .floating-cta {
+    gap: 0.35rem;
+    padding-inline: 0.5rem;
+  }
+
+  .floating-cta .btn {
+    min-height: 46px;
+    padding-inline: 0.65rem;
+    font-size: 0.86rem;
   }
 }

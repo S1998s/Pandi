@@ -4,11 +4,15 @@ import "./globals.css";
 const dmSans = DM_Sans({
   variable: "--font-body",
   subsets: ["latin"],
+  display: "swap",
+  preload: true,
 });
 
 const sora = Sora({
   variable: "--font-heading",
   subsets: ["latin"],
+  display: "swap",
+  preload: true,
 });
 
 export const metadata = {
